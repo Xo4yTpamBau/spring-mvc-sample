@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/calculator}" th:object="${operation}" method="post">
+    <input type="text" th:field="*{num1}" placeholder="num1">
+    <p th:if="${#fields.hasErrors('num1')}" th:errors="*{num1}"></p>
+    <input type="text" th:field="*{num2}" placeholder="num2">
+    <p th:if="${#fields.hasErrors('num2')}" th:errors="*{num2}"></p>
+    <input type="text" th:field="*{operationName}" placeholder="operation">
+    <p th:if="${#fields.hasErrors('operationName')}" th:errors="*{operationName}"></p>
+    <button>calc</button>
+</form>
+<p th:if="${result != null}" th:text="'Result = ' + ${result}"></p>
+<a href="/history">history</a>
+</body>
+</html>
